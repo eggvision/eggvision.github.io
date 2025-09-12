@@ -21,7 +21,7 @@
             -webkit-overflow-scrolling: touch;
         }
         .section-snap {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -42,15 +42,18 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 1.5rem;
-            padding: 2.5rem;
+            padding: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .card-elegant:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
         }
-        /* Hiệu ứng mờ dần khi cuộn vào */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -60,6 +63,24 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Tối ưu hóa kích thước font và khoảng cách cho màn hình di động */
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.25rem; }
+            p { font-size: 0.875rem; }
+            .section-snap { padding: 1rem; }
+            .card-elegant { padding: 0.75rem; }
+            .text-5xl, .text-6xl { font-size: 2.5rem; }
+            .text-7xl { font-size: 3rem; }
+            .text-xl { font-size: 1rem; }
+            .text-lg { font-size: 0.875rem; }
+            .mb-4 { margin-bottom: 1rem; }
+            .mb-2 { margin-bottom: 0.5rem; }
+            .space-y-12 > * + * { margin-top: 1.5rem; }
+            .sm\:text-7xl, .md\:text-8xl { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -67,18 +88,18 @@
     <div class="container-snap">
 
         <!-- Trang 1: Giới thiệu chung -->
-        <section class="section-snap py-8 flex-col justify-between h-full">
-            <div class="pt-10 fade-in flex-grow flex flex-col justify-center items-center">
-                <h1 class="text-7xl md:text-8xl font-black leading-tight gradient-heading mb-4">
+        <section class="section-snap py-8 flex-col justify-center h-full">
+            <div class="pt-10 fade-in flex-grow flex flex-col justify-center items-center px-4 md:px-8">
+                <h1 class="text-5xl sm:text-7xl md:text-8xl font-black leading-tight gradient-heading mb-4">
                     EggVision
                 </h1>
-                <p class="text-2xl md:text-3xl font-semibold text-gray-700 mb-4">AI-powered Egg Sexing: Giải pháp xác định giới tính trứng gà</p>
-                <p class="text-xl md:text-2xl font-semibold max-w-2xl mx-auto text-gray-800 mb-4">
+                <p class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-4 px-2">AI-powered Egg Sexing: Giải pháp xác định giới tính trứng gà</p>
+                <p class="text-base sm:text-lg md:text-xl font-semibold max-w-2xl mx-auto text-gray-800 mb-4 px-2">
                     Phá vỡ giới hạn, định hình tương lai ngành chăn nuôi gà cùng trí tuệ nhân tạo.
                 </p>
             </div>
-            <div class="pb-10 fade-in">
-                <a href="#problem" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-indigo-500 transition-colors duration-300 text-lg">
+            <div class="pb-10 fade-in px-4">
+                <a href="#problem" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-500 transition-colors duration-300 text-lg">
                     Khám phá ngay
                 </a>
             </div>
@@ -86,26 +107,24 @@
 
         <!-- Trang 2: Vấn đề -->
         <section id="problem" class="section-snap">
-            <div class="flex flex-col md:flex-row items-center space-y-12 md:space-y-0 md:space-x-16 max-w-6xl mx-auto">
-                <div class="flex-1 space-y-8 fade-in">
-                    <div>
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-red-600 mb-6 leading-tight">
-                            Một vấn đề toàn cầu: Lãng phí và đạo đức
-                        </h2>
-                        <p class="text-lg md:text-xl text-gray-600">
-                            Mỗi năm, hàng tỷ gà trống con bị tiêu hủy ngay sau khi nở. Một sự lãng phí tài nguyên khổng lồ và một thách thức đạo đức nhức nhối đối với toàn ngành.
-                        </p>
-                        <div class="mt-8 text-center md:text-left">
-                            <p class="text-6xl md:text-7xl font-bold text-red-700 mb-2">~7 TỶ</p>
-                            <p class="text-2xl font-semibold text-gray-500">gà trống bị tiêu hủy mỗi năm.</p>
-                        </div>
+            <div class="flex flex-col items-center space-y-8 max-w-6xl mx-auto px-4">
+                <div class="space-y-4 fade-in">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-red-600 mb-2 leading-tight">
+                        Một vấn đề toàn cầu: Lãng phí và đạo đức
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                        Mỗi năm, hàng tỷ gà trống con bị tiêu hủy ngay sau khi nở. Sự lãng phí khổng lồ và thách thức đạo đức nhức nhối.
+                    </p>
+                    <div class="mt-4 text-center">
+                        <p class="text-5xl font-bold text-red-700">~7 TỶ</p>
+                        <p class="text-sm font-semibold text-gray-500">gà trống bị tiêu hủy mỗi năm.</p>
                     </div>
                 </div>
-                <div class="flex-1 space-y-8 fade-in">
+                <div class="w-full flex justify-center fade-in">
                     <div class="card-elegant text-center">
-                        <div class="text-6xl mb-4">💔</div>
-                        <h3 class="text-3xl font-bold text-gray-800">Một Vấn đề Nhức Nhối</h3>
-                        <p class="text-lg text-gray-600 mt-2">Sự lãng phí và thách thức đạo đức nhức nhối đối với toàn ngành.</p>
+                        <div class="text-4xl mb-2">💔</div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-800">Một Vấn đề Nhức Nhối</h3>
+                        <p class="text-sm text-gray-600 mt-1">Sự lãng phí và thách thức đạo đức nhức nhối đối với toàn ngành.</p>
                     </div>
                 </div>
             </div>
@@ -113,24 +132,25 @@
 
         <!-- Trang 3: Giải pháp -->
         <section class="section-snap">
-            <div class="max-w-7xl mx-auto space-y-12">
-                <h2 class="text-5xl md:text-6xl font-extrabold gradient-heading leading-tight mb-8 fade-in">
+            <div class="max-w-7xl mx-auto space-y-6 px-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold gradient-heading leading-tight mb-4 fade-in">
                     Giải pháp đột phá
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                     <div class="card-elegant text-center fade-in">
-                        <div class="text-5xl mb-4">🔬</div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Công nghệ AI Computer Vision</h3>
-                        <p class="text-gray-600">Xác định giới tính ngay trong trứng, không xâm lấn, hiệu quả vượt trội.</p>
+                        <div class="text-3xl mb-2">🔬</div>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1">Công nghệ AI Computer Vision</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Xác định giới tính ngay trong trứng, không xâm lấn, hiệu quả vượt trội.</p>
                     </div>
                     <div class="card-elegant text-center fade-in">
-                        <div class="text-5xl mb-4">🧠</div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Hệ thống EggVision</h3>
-                        <p class="text-gray-600">Một cỗ máy tinh gọn, tích hợp AI mạnh mẽ để phân tích và phân loại trứng tự động.</p></div>
+                        <div class="text-3xl mb-2">🧠</div>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1">Hệ thống EggVision</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Phân tích và phân loại trứng tự động.</p>
+                    </div>
                     <div class="card-elegant text-center fade-in">
-                        <div class="text-5xl mb-4">💰</div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Tối ưu hóa lợi nhuận</h3>
-                        <p class="text-gray-600">Loại bỏ chi phí và năng lượng ấp trứng gà trống, và nuôi 1 tháng, tăng lợi nhuận tức thì.</p>
+                        <div class="text-3xl mb-2">💰</div>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1">Tối ưu hóa lợi nhuận</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Loại bỏ chi phí và năng lượng ấp trứng gà trống.</p>
                     </div>
                 </div>
             </div>
@@ -138,34 +158,22 @@
 
         <!-- Trang 4: Tại sao là EggVision? -->
         <section class="section-snap">
-            <div class="max-w-6xl mx-auto space-y-12 text-left">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-blue-600 leading-tight mb-8 text-center fade-in">
+            <div class="max-w-6xl mx-auto space-y-6 text-left px-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-600 leading-tight mb-4 text-center fade-in">
                     Vì sao EggVision là giải pháp đúng thời điểm?
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                     <div class="card-elegant fade-in">
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Áp lực đạo đức</h3>
-                        <ul class="list-none space-y-2">
-                            <li class="flex items-start">
-                                <p class="text-lg text-gray-600">Nhiều quốc gia châu Âu đã cấm tiêu hủy gà trống con.</p>
-                            </li>
-                        </ul>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-2">Áp lực đạo đức</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Nhiều quốc gia châu Âu đã cấm tiêu hủy gà trống con.</p>
                     </div>
                     <div class="card-elegant fade-in">
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Xu hướng toàn cầu</h3>
-                        <ul class="list-none space-y-2">
-                            <li class="flex items-start">
-                                <p class="text-lg text-gray-600">Chuyển dịch sang "in-ovo sexing" là một chuẩn mực mới.</p>
-                            </li>
-                        </ul>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-2">Xu hướng toàn cầu</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Chuyển dịch sang "in-ovo sexing" là một chuẩn mực mới.</p>
                     </div>
                     <div class="card-elegant fade-in">
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Thị trường tiềm năng</h3>
-                        <ul class="list-none space-y-2">
-                            <li class="flex items-start">
-                                <p class="text-lg text-gray-600">Thiếu giải pháp nội địa tại Việt Nam & Đông Nam Á.</p>
-                            </li>
-                        </ul>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-2">Thị trường tiềm năng</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Thiếu giải pháp nội địa tại Việt Nam & Đông Nam Á.</p>
                     </div>
                 </div>
             </div>
@@ -173,28 +181,25 @@
 
         <!-- Trang 5: Thị trường -->
         <section class="section-snap">
-            <div class="max-w-5xl mx-auto space-y-12">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-teal-600 mb-6 leading-tight fade-in">
+            <div class="max-w-5xl mx-auto space-y-6 px-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-teal-600 mb-4 leading-tight fade-in">
                     Cơ hội thị trường tỉ đô
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                <div class="text-left space-y-4">
                     <div class="fade-in">
-                        <p class="text-4xl font-bold text-gray-800">
+                        <p class="text-xl sm:text-2xl font-bold text-gray-800">
                             Thị trường trứng toàn cầu:
                         </p>
-                        <p class="text-6xl md:text-7xl font-black text-teal-700 mt-2">
+                        <p class="text-5xl font-black text-teal-700 mt-1">
                             ~150 TỶ USD
                         </p>
-                        <p class="text-xl text-gray-600 mt-4">
+                        <p class="text-sm sm:text-base text-gray-600 mt-2">
                             Đang trên đà tăng trưởng mạnh mẽ, dự kiến đạt hơn 222 tỷ USD vào năm 2032.
                         </p>
                     </div>
                     <div class="fade-in">
-                        <p class="text-xl text-gray-600">
-                            Trong đó, châu Á - Thái Bình Dương chiếm hơn 59% thị trường, một tiềm năng khổng lồ chưa được khai thác.
-                        </p>
-                        <p class="text-xl text-gray-600 mt-4">
-                            Sự thay đổi về luật pháp và nhận thức đang tạo ra nhu cầu bức thiết cho một giải pháp nhân đạo và hiệu quả như EggVision.
+                        <p class="text-sm sm:text-base text-gray-600">
+                            Châu Á - Thái Bình Dương chiếm hơn 59% thị trường, một tiềm năng khổng lồ chưa được khai thác.
                         </p>
                     </div>
                 </div>
@@ -203,46 +208,36 @@
 
         <!-- Trang 6: Đội ngũ & Tầm nhìn -->
         <section class="section-snap">
-            <div class="max-w-6xl mx-auto space-y-12">
-                <h2 class="text-5xl md:text-6xl font-extrabold gradient-heading leading-tight mb-8 fade-in">
+            <div class="max-w-6xl mx-auto space-y-6 px-4 text-left">
+                <h2 class="text-3xl sm:text-4xl font-extrabold gradient-heading leading-tight mb-4 fade-in">
                     Đội ngũ & Tầm nhìn
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-                    <div class="fade-in">
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Một đội ngũ vững mạnh</h3>
-                        <p class="text-lg text-gray-600">
-                            Được dẫn dắt bởi các chuyên gia trong lĩnh vực AI, IoT và kinh doanh. Chúng tôi có kinh nghiệm thực chiến và đã được công nhận qua các giải thưởng danh giá.
-                        </p>
-                        <ul class="list-disc list-inside mt-6 text-gray-600 space-y-2">
-                            <li>Kỹ sư AI & IoT tu nghiệp tại Đức.</li>
-                            <li>Giảng viên AI hàng đầu từ ĐH Bách Khoa.</li>
-                            <li>Đội ngũ kỹ sư tài năng, giàu kinh nghiệm.</li>
-                        </ul>
-                    </div>
-                    <div class="fade-in">
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Tầm nhìn dài hạn & Tác động xã hội</h3>
-                        <p class="text-lg text-gray-600">
-                            EggVision không chỉ là một giải pháp kinh tế mà còn là một bước tiến quan trọng trong việc thúc đẩy lợi ích nhân đạo và phát triển bền vững cho ngành chăn nuôi trên toàn thế giới.
-                        </p>
-                        <p class="text-lg text-gray-600 mt-4">
-                            Chúng tôi tin rằng công nghệ có thể mang lại lợi ích cho cả con người và những sinh vật khác trên hành tinh này.
-                        </p>
-                    </div>
+                <div class="space-y-4 fade-in">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Một đội ngũ vững mạnh</h3>
+                    <p class="text-sm sm:text-base text-gray-600">
+                        Được dẫn dắt bởi các chuyên gia trong lĩnh vực AI, IoT và kinh doanh. Chúng tôi có kinh nghiệm thực chiến và đã được công nhận qua các giải thưởng danh giá.
+                    </p>
+                </div>
+                <div class="space-y-4 fade-in">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Tầm nhìn & Tác động xã hội</h3>
+                    <p class="text-sm sm:text-base text-gray-600">
+                        EggVision không chỉ là một giải pháp kinh tế mà còn là một bước tiến quan trọng trong việc thúc đẩy lợi ích nhân đạo và phát triển bền vững cho ngành chăn nuôi.
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Trang 7: Lời kêu gọi hành động -->
         <section class="section-snap">
-            <div class="space-y-8 flex flex-col items-center">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight fade-in">
+            <div class="space-y-6 flex flex-col items-center px-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800 leading-tight fade-in">
                     Sẵn sàng thay đổi tương lai?
                 </h2>
-                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto fade-in">
+                <p class="text-base sm:text-lg text-gray-600 max-w-xl mx-auto fade-in">
                     Hãy cùng chúng tôi viết nên câu chuyện của sự đổi mới, hiệu quả và nhân đạo trong ngành chăn nuôi gà.
                 </p>
-                <div class="mt-auto pt-16 fade-in">
-                    <a id="contactButton" href="#" class="bg-teal-500 text-gray-900 font-bold py-5 px-10 rounded-full shadow-lg hover:bg-teal-400 transition-colors duration-300 text-xl md:text-2xl">
+                <div class="mt-auto pt-8 fade-in">
+                    <a id="contactButton" href="#" class="bg-teal-500 text-gray-900 font-bold py-4 px-8 rounded-full shadow-lg hover:bg-teal-400 transition-colors duration-300 text-lg md:text-xl">
                         Liên hệ với chúng tôi
                     </a>
                 </div>
@@ -253,15 +248,15 @@
 
     <!-- Hộp thoại Pop-up -->
     <div id="contactModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black bg-opacity-50">
-      <div class="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full mx-4 border-2 border-gray-200">
-        <h3 class="text-2xl font-bold mb-4 text-center text-gray-800">Thông tin liên hệ</h3>
-        <p class="text-center text-lg font-semibold text-indigo-600 mb-6">info@aiti.vn</p>
+      <div class="bg-white p-6 rounded-2xl shadow-xl max-w-sm w-full mx-4 border-2 border-gray-200">
+        <h3 class="text-xl font-bold mb-3 text-center text-gray-800">Thông tin liên hệ</h3>
+        <p class="text-center text-lg font-semibold text-indigo-600 mb-4">info@aiti.vn</p>
         <div class="flex justify-center space-x-4">
-          <button id="copyButton" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-full hover:bg-indigo-500 transition-colors">Sao chép</button>
-          <button id="closeModalButton" class="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-gray-400 transition-colors">Đóng</button>
+          <button id="copyButton" class="bg-indigo-600 text-white font-bold py-2 px-5 rounded-full hover:bg-indigo-500 transition-colors">Sao chép</button>
+          <button id="closeModalButton" class="bg-gray-300 text-gray-800 font-bold py-2 px-5 rounded-full hover:bg-gray-400 transition-colors">Đóng</button>
         </div>
         <!-- Thông báo sao chép -->
-        <p id="copyMessage" class="text-sm text-green-600 mt-4 text-center hidden">Đã sao chép!</p>
+        <p id="copyMessage" class="text-sm text-green-600 mt-2 text-center hidden">Đã sao chép!</p>
       </div>
     </div>
 
