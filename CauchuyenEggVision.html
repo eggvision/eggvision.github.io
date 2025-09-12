@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EggVision - Trang Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1F2937;
+        }
+        .container-snap {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .section-snap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background-color: #F8F9FA;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin: 1rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <div class="container-snap">
+
+        <!-- Slide 1: Tiêu đề & Sứ mệnh -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h1 class="text-6xl md:text-8xl font-black text-gray-900 mb-6 leading-tight font-['Montserrat'] drop-shadow-lg">
+                    EggVision
+                </h1>
+                <h2 class="text-3xl font-semibold text-gray-700 mb-8">
+                    Nơi công nghệ AI đứng về phía sự sống
+                </h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Hãy cùng chúng tôi chấm dứt sự lãng phí và mang lại một tương lai nhân đạo hơn cho ngành chăn nuôi.
+                </p>
+                <a href="#industry-scale" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300">
+                    Bắt đầu câu chuyện
+                </a>
+            </div>
+        </section>
+
+        <!-- Mở đầu: Quy mô ngành -->
+        <section id="industry-scale" class="section-snap py-12">
+            <div class="fade-in max-w-4xl px-4">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Quy mô ngành: Một trụ cột của nền kinh tế toàn cầu</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Ngành chăn nuôi gia cầm là một phần không thể thiếu của nền kinh tế thế giới.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-stretch space-y-8 md:space-y-0 md:space-x-8 mt-6">
+                    <div class="bg-yellow-50 p-6 rounded-3xl shadow-lg border border-yellow-200 w-full max-w-sm flex flex-col items-start text-left">
+                        <h3 class="text-xl font-bold text-yellow-700 mb-2">Thị trường thịt gà</h3>
+                        <p class="text-gray-600 text-lg mb-2">Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.</p>
+                        <ul class="text-gray-600 text-sm list-inside list-disc">
+                            <li>Châu Mỹ: Tiêu thụ thịt gà bình quân đầu người cao nhất thế giới.</li>
+                            <li>Việt Nam: Nhu cầu tiêu thụ gà thịt tăng trưởng liên tục.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-3xl shadow-lg border border-orange-200 w-full max-w-sm flex flex-col items-start text-left">
+                        <h3 class="text-xl font-bold text-orange-700 mb-2">Thị trường trứng gà</h3>
+                        <p class="text-gray-600 text-lg mb-2">Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.</p>
+                        <ul class="text-gray-600 text-sm list-inside list-disc">
+                            <li>Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.</li>
+                            <li>Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#story-start" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-full mt-8 inline-block shadow-lg hover:bg-indigo-700 transition duration-300">
+                    Nhưng đằng sau đó...
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Mở đầu câu chuyện: "7 tỷ mạng sống" -->
+        <section id="story-start" class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Câu chuyện về "7 tỷ mạng sống"</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6 text-justify">
+                    Hãy tưởng tượng. Trong một góc khuất của nền công nghiệp thực phẩm, mỗi năm, 7 tỷ sinh mạng nhỏ bé kết thúc hành trình của mình chỉ sau vài giờ chào đời. Chúng không phải là thức ăn. Chúng là những chú gà trống con bị tiêu hủy.
+                </p>
+                <p class="text-xl text-gray-600 leading-relaxed text-justify">
+                    Đó là một sự lãng phí khủng khiếp về kinh tế, nhưng trên hết, đó là một vết rạn nứt trong lương tâm của cả một ngành công nghiệp. Chúng ta không thể tiếp tục lờ đi tiếng nói của đạo đức. Chúng ta không thể tiếp tục phung phí nguồn lực chỉ vì thiếu một giải pháp công nghệ.
+                </p>
+            </div>
+        </section>
+
+        <!-- Giữa câu chuyện: Sự xuất hiện của "Những người thắp sáng hy vọng" -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-4">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Sự xuất hiện của những người thắp sáng hy vọng</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mt-4 text-justify">
+                    Đội ngũ của chúng tôi không chỉ là những kỹ sư. Họ là những con người đã chứng kiến vấn đề này và quyết tâm phải thay đổi. Chúng tôi là một tập hợp những khối óc tinh túy nhất từ các tập đoàn công nghệ hàng đầu Việt Nam như VinAI (VinGroup), FPT Software, và nhiều công ty công nghệ lớn khác. Chúng tôi không chỉ là những người giỏi kỹ thuật, chúng tôi là những người đã xây dựng nên những sản phẩm AI trị giá hàng triệu đô. Người dẫn dắt chúng tôi là một người đã tạo ra hợp đồng 10 triệu USD và đã chiến thắng cuộc thi QVIC trị giá 100.000 USD bằng chính sự sáng tạo của mình. Để đảm bảo tầm nhìn của chúng tôi vươn ra toàn cầu, chúng tôi có sự cố vấn của các Tiến sĩ AI từ Châu Âu, những người đã từng nghiên cứu tại các trung tâm công nghệ hàng đầu ở Ý và Phần Lan. Đây là đội ngũ đã được chứng minh năng lực, những con người đã biến những ý tưởng lớn nhất thành hiện thực.
+                </p>
+            </div>
+        </section>
+
+        <!-- Giữa câu chuyện: Giải pháp và Thành quả -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-4">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Giải pháp và thành quả đầu tiên của chúng tôi</h2>
+                <p class="text-gray-700 leading-relaxed mb-4 text-justify">
+                    Chúng tôi đã dành hơn 2 năm để nghiên cứu và tìm kiếm câu trả lời, từ đó tạo ra EggVision, một giải pháp sử dụng AI thị giác máy tính, không chạm vào trứng, không gây tổn hại, để trả lời một câu hỏi đơn giản: Trứng này có phải là gà trống?
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4 text-justify">
+                    Chúng tôi bắt đầu với một prototype nhỏ bé trong phòng thí nghiệm. Độ chính xác ban đầu chỉ đạt 68%. Nhiều người có thể đã bỏ cuộc. Nhưng chúng tôi nhìn thấy điều mà người khác không thấy: đó không phải là một con số, đó là một lời hứa. Lời hứa rằng với dữ liệu và sự kiên trì, chúng tôi có thể đưa con số đó lên 85-90%, thậm chí cao hơn nữa.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-justify">
+                    Chúng tôi đã chứng minh điều đó. Chúng tôi đã thử nghiệm tại một trại gà thật, thu thập hàng ngàn mẫu dữ liệu, vì chúng tôi biết rằng để giải quyết một vấn đề thực tế, chúng tôi phải làm việc trong một môi trường thực tế.
+                </p>
+            </div>
+        </section>
+
+        <!-- Kết thúc câu chuyện: Lời kêu gọi hành động -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Hành trình thay đổi thế giới</h2>
+                <p class="text-xl text-gray-600 leading-relaxed mb-6">
+                    Chúng tôi mời bạn cùng tham gia vào một hành trình vĩ đại.
+                </p>
+                <div class="card fade-in max-w-2xl mx-auto">
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Chúng tôi tìm kiếm 500.000 USD, không phải chỉ để phát triển sản phẩm, mà để tạo ra một làn sóng thay đổi. Khoản vốn này sẽ giúp chúng tôi xây dựng những thiết bị đầu tiên, tuyển dụng những con người xuất sắc nhất, và đưa giải pháp nhân đạo này đến hàng triệu trại ấp trên khắp Đông Nam Á và toàn cầu.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Hành trình này không chỉ là một khoản đầu tư tài chính. Đây là khoản đầu tư vào một tương lai nhân đạo hơn, một nền kinh tế bền vững hơn, nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide cuối: Lời kêu gọi và Thông tin liên hệ -->
+        <section id="contact" class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Hãy cùng chúng tôi thắp sáng hy vọng cho 7 tỷ mạng sống này.</h2>
+                <div class="bg-indigo-50 p-6 rounded-2xl shadow-md border border-indigo-200 w-full max-w-sm mx-auto">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">Thông tin liên hệ</h3>
+                    <p class="text-gray-600">Email: info@aiti.vn</p>
+                    <p class="text-gray-600">Phone: +84 88888 1081</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+</body>
+</html>
