@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EggVision - AI Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fff0;
+            color: #1F2937;
+        }
+        
+        .container-snap {
+            height: 100vh;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .section-snap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Snap behavior for desktop/tablet screens */
+        @media (min-width: 768px) {
+            .container-snap {
+                scroll-snap-type: y mandatory;
+            }
+            .section-snap {
+                scroll-snap-align: start;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background-color: #fafafa;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin: 1rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="lang-toggle" class="fixed top-4 right-4 z-50 bg-indigo-600 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300">
+        EN
+    </button>
+
+    <div class="container-snap">
+
+        <!-- Slide 1: Tiêu đề & Sứ mệnh -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h1 class="text-6xl md:text-8xl font-black text-gray-900 mb-6 leading-tight font-['Montserrat'] drop-shadow-lg">
+                    EggVision
+                </h1>
+                <h2 class="text-3xl font-semibold text-gray-700 mb-8" data-lang-key="slogan">
+                    Công nghệ AI đứng về phía sự sống
+                </h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto" data-lang-key="mission_statement">
+                    Chấm dứt lãng phí và tạo tương lai nhân đạo cho ngành chăn nuôi.
+                </p>
+                <a href="#contact" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300" data-lang-key="cta_contact">
+                    Liên hệ
+                </a>
+            </div>
+        </section>
+
+        <!-- Slide 2: Vấn đề -->
+        <section id="problem" class="section-snap py-12">
+            <div class="fade-in max-w-4xl px-4">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight" data-lang-key="problem_title">Vấn đề</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6 text-justify" data-lang-key="problem_p1">
+                    Mỗi năm, hơn 7 tỉ gà trống con bị tiêu hủy.
+                </p>
+                <p class="text-xl text-gray-600 leading-relaxed text-justify" data-lang-key="problem_p2">
+                    Đây không chỉ là một vấn đề đạo đức nhức nhối mà còn là sự lãng phí kinh tế khổng lồ.
+                </p>
+                <div class="mt-8 mb-6 rounded-3xl overflow-hidden shadow-lg">
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Giải pháp -->
+        <section id="solution" class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="solution_title">Giải pháp & Kết quả</h2>
+                <div class="card fade-in max-w-2xl mx-auto mb-8">
+                    <p class="text-gray-700 leading-relaxed mb-4" data-lang-key="solution_p1">
+                        EggVision sử dụng công nghệ AI và thị giác máy tính để xác định giới tính của phôi gà ngay từ trong trứng.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed" data-lang-key="solution_p2">
+                        Sau các thử nghiệm thực tế, EggVision đã chứng minh hiệu quả cao, giúp ngăn chặn việc ấp nở và tiêu hủy gà trống.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Đội ngũ -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-4">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="team_title">Đội ngũ</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mt-4 text-justify" data-lang-key="team_content">
+                    Những khối óc tinh túy từ các tập đoàn công nghệ hàng đầu Việt Nam như VinAI và FPT Software. Được cố vấn bởi các Tiến sĩ AI từ châu Âu.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 5: Kế hoạch & Kêu gọi -->
+        <section class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="plan_title">Kế hoạch tiếp theo</h2>
+                <p class="text-xl text-gray-600 leading-relaxed mb-6" data-lang-key="plan_p1">
+                    Chúng tôi đang kêu gọi $500,000 để đưa EggVision từ prototype thành sản phẩm thực tế.
+                </p>
+                <div class="card fade-in max-w-2xl mx-auto">
+                    <ul class="text-gray-700 leading-relaxed list-inside list-disc" data-lang-key="plan_list">
+                        <li>Đầu tư nghiên cứu R&D để tăng độ chính xác.</li>
+                        <li>Hoàn thiện và sản xuất 2-3 thiết bị EggVision thương mại đầu tiên.</li>
+                        <li>Mở rộng đội ngũ kỹ thuật và kinh doanh.</li>
+                        <li>Đưa sản phẩm tới các trang trại ở Việt Nam và Đông Nam Á.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide cuối: Lời kêu gọi hành động & Liên hệ -->
+        <section id="contact" class="section-snap">
+            <div class="fade-in max-w-4xl px-4 py-8">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="cta_final">
+                    Cùng nhau thắp sáng hy vọng cho 7 tỷ mạng sống này.
+                </h2>
+                <div class="bg-indigo-50 p-6 rounded-2xl shadow-md border border-indigo-200 w-full max-w-sm mx-auto">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2" data-lang-key="contact_title">Liên hệ</h3>
+                    <p class="text-gray-600" data-lang-key="contact_email">Email: info@aiti.vn</p>
+                    <p class="text-gray-600" data-lang-key="contact_phone">Phone: +84 88888 1081</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const langData = {
+            'vi': {
+                'slogan': 'Công nghệ AI đứng về phía sự sống',
+                'mission_statement': 'Chấm dứt lãng phí và tạo tương lai nhân đạo cho ngành chăn nuôi.',
+                'cta_contact': 'Liên hệ',
+                'problem_title': 'Vấn đề',
+                'problem_p1': 'Mỗi năm, hơn 7 tỉ gà trống con bị tiêu hủy.',
+                'problem_p2': 'Đây không chỉ là một vấn đề đạo đức nhức nhối mà còn là sự lãng phí kinh tế khổng lồ.',
+                'solution_title': 'Giải pháp & Kết quả',
+                'solution_p1': 'EggVision sử dụng công nghệ AI và thị giác máy tính để xác định giới tính của phôi gà ngay từ trong trứng.',
+                'solution_p2': 'Sau các thử nghiệm thực tế, EggVision đã chứng minh hiệu quả cao, giúp ngăn chặn việc ấp nở và tiêu hủy gà trống.',
+                'team_title': 'Đội ngũ',
+                'team_content': 'Những khối óc tinh túy từ các tập đoàn công nghệ hàng đầu Việt Nam như VinAI và FPT Software. Được cố vấn bởi các Tiến sĩ AI từ châu Âu.',
+                'plan_title': 'Kế hoạch tiếp theo',
+                'plan_p1': 'Chúng tôi đang kêu gọi $500,000 để đưa EggVision từ prototype thành sản phẩm thực tế.',
+                'plan_list': [
+                    'Đầu tư nghiên cứu R&D để tăng độ chính xác.',
+                    'Hoàn thiện và sản xuất 2-3 thiết bị EggVision thương mại đầu tiên.',
+                    'Mở rộng đội ngũ kỹ thuật và kinh doanh.',
+                    'Đưa sản phẩm tới các trang trại ở Việt Nam và Đông Nam Á.'
+                ],
+                'cta_final': 'Cùng nhau thắp sáng hy vọng cho 7 tỷ mạng sống này.',
+                'contact_title': 'Liên hệ',
+                'contact_email': 'Email: info@aiti.vn',
+                'contact_phone': 'Phone: +84 88888 1081',
+                'lang_button': 'EN'
+            },
+            'en': {
+                'slogan': 'AI technology on the side of life',
+                'mission_statement': 'Ending waste and creating a humane future for the poultry industry.',
+                'cta_contact': 'Contact Us',
+                'problem_title': 'The Problem',
+                'problem_p1': 'Every year, over 7 billion male chicks are culled.',
+                'problem_p2': 'This is not only a painful ethical issue but also a huge economic waste.',
+                'solution_title': 'Solution & Results',
+                'solution_p1': 'EggVision uses groundbreaking AI and computer vision to determine the sex of chicken embryos right inside the egg.',
+                'solution_p2': 'After real-world farm trials, our solution has proven highly effective, preventing the hatching and culling of male chicks.',
+                'team_title': 'The Team',
+                'team_content': 'The brightest minds from leading Vietnamese tech corporations like VinAI and FPT Software. Advised by top AI PhDs from Europe.',
+                'plan_title': 'Next Steps',
+                'plan_p1': 'We are seeking $500,000 to bring EggVision from a prototype to a commercial product.',
+                'plan_list': [
+                    'Invest in R&D to increase accuracy.',
+                    'Finalize and produce the first 2-3 commercial EggVision devices.',
+                    'Expand the technical and business team.',
+                    'Bring the product to farms in Vietnam and Southeast Asia.'
+                ],
+                'cta_final': 'Together, let\'s light a beacon of hope for these 7 billion lives.',
+                'contact_title': 'Contact',
+                'contact_email': 'Email: info@aiti.vn',
+                'contact_phone': 'Phone: +84 88888 1081',
+                'lang_button': 'VN'
+            }
+        };
+        
+        const langToggleBtn = document.getElementById('lang-toggle');
+        let currentLang = localStorage.getItem('lang') || 'vi';
+
+        const updateLanguage = (lang) => {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (key === 'plan_list') {
+                    // Special handling for the list
+                    const listHtml = langData[lang][key].map(item => `<li>${item}</li>`).join('');
+                    el.innerHTML = listHtml;
+                } else if (langData[lang] && langData[lang][key]) {
+                    el.textContent = langData[lang][key];
+                }
+            });
+            langToggleBtn.textContent = langData[lang].lang_button;
+            localStorage.setItem('lang', lang);
+        };
+
+        updateLanguage(currentLang);
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            updateLanguage(currentLang);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+</body>
+</html>
