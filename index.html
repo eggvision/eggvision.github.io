@@ -14,12 +14,13 @@
             background-color: #FFFFFF;
             color: #1F2937;
         }
+        
         .container-snap {
             height: 100vh;
             overflow-y: scroll;
-            scroll-snap-type: y mandatory;
             -webkit-overflow-scrolling: touch;
         }
+
         .section-snap {
             min-height: 100vh;
             display: flex;
@@ -28,8 +29,18 @@
             align-items: center;
             padding: 2rem;
             text-align: center;
-            scroll-snap-align: start;
         }
+
+        /* Snap behavior for desktop/tablet screens */
+        @media (min-width: 768px) {
+            .container-snap {
+                scroll-snap-type: y mandatory;
+            }
+            .section-snap {
+                scroll-snap-align: start;
+            }
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -51,6 +62,10 @@
 </head>
 <body class="bg-white">
 
+    <button id="lang-toggle" class="fixed top-4 right-4 z-50 bg-indigo-600 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300">
+        EN
+    </button>
+
     <div class="container-snap">
 
         <!-- Slide 1: Tiêu đề & Sứ mệnh -->
@@ -59,13 +74,13 @@
                 <h1 class="text-6xl md:text-8xl font-black text-gray-900 mb-6 leading-tight font-['Montserrat'] drop-shadow-lg">
                     EggVision
                 </h1>
-                <h2 class="text-3xl font-semibold text-gray-700 mb-8">
+                <h2 class="text-3xl font-semibold text-gray-700 mb-8" data-lang-key="slogan">
                     Nơi công nghệ AI đứng về phía sự sống
                 </h2>
-                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto" data-lang-key="mission_statement">
                     Hãy cùng chúng tôi chấm dứt sự lãng phí và mang lại một tương lai nhân đạo hơn cho ngành chăn nuôi.
                 </p>
-                <a href="#industry-scale" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300">
+                <a href="#industry-scale" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300" data-lang-key="cta_start">
                     Bắt đầu câu chuyện
                 </a>
             </div>
@@ -74,29 +89,29 @@
         <!-- Mở đầu: Quy mô ngành -->
         <section id="industry-scale" class="section-snap py-12">
             <div class="fade-in max-w-4xl px-4">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Quy mô ngành: Một trụ cột của nền kinh tế toàn cầu</h2>
-                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight" data-lang-key="industry_title">Quy mô ngành: Một trụ cột của nền kinh tế toàn cầu</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6" data-lang-key="industry_intro">
                     Ngành chăn nuôi gia cầm là một phần không thể thiếu của nền kinh tế thế giới.
                 </p>
                 <div class="flex flex-col md:flex-row justify-center items-stretch space-y-8 md:space-y-0 md:space-x-8 mt-6">
                     <div class="bg-yellow-50 p-6 rounded-3xl shadow-lg border border-yellow-200 w-full max-w-sm flex flex-col items-start text-left">
-                        <h3 class="text-xl font-bold text-yellow-700 mb-2">Thị trường thịt gà</h3>
-                        <p class="text-gray-600 text-lg mb-2">Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.</p>
+                        <h3 class="text-xl font-bold text-yellow-700 mb-2" data-lang-key="chicken_title">Thị trường thịt gà</h3>
+                        <p class="text-gray-600 text-lg mb-2" data-lang-key="chicken_stat">Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.</p>
                         <ul class="text-gray-600 text-sm list-inside list-disc">
-                            <li>Châu Mỹ: Tiêu thụ thịt gà bình quân đầu người cao nhất thế giới.</li>
-                            <li>Việt Nam: Nhu cầu tiêu thụ gà thịt tăng trưởng liên tục.</li>
+                            <li data-lang-key="chicken_li1">Châu Mỹ: Tiêu thụ thịt gà bình quân đầu người cao nhất thế giới.</li>
+                            <li data-lang-key="chicken_li2">Việt Nam: Nhu cầu tiêu thụ gà thịt tăng trưởng liên tục.</li>
                         </ul>
                     </div>
                     <div class="bg-orange-50 p-6 rounded-3xl shadow-lg border border-orange-200 w-full max-w-sm flex flex-col items-start text-left">
-                        <h3 class="text-xl font-bold text-orange-700 mb-2">Thị trường trứng gà</h3>
-                        <p class="text-gray-600 text-lg mb-2">Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.</p>
+                        <h3 class="text-xl font-bold text-orange-700 mb-2" data-lang-key="egg_title">Thị trường trứng gà</h3>
+                        <p class="text-gray-600 text-lg mb-2" data-lang-key="egg_stat">Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.</p>
                         <ul class="text-gray-600 text-sm list-inside list-disc">
-                            <li>Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.</li>
-                            <li>Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.</li>
+                            <li data-lang-key="egg_li1">Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.</li>
+                            <li data-lang-key="egg_li2">Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.</li>
                         </ul>
                     </div>
                 </div>
-                <a href="#story-start" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-full mt-8 inline-block shadow-lg hover:bg-indigo-700 transition duration-300">
+                <a href="#story-start" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-full mt-8 inline-block shadow-lg hover:bg-indigo-700 transition duration-300" data-lang-key="cta_behind">
                     Nhưng đằng sau đó...
                 </a>
             </div>
@@ -106,11 +121,11 @@
         <!-- Mở đầu câu chuyện: "7 tỷ mạng sống" -->
         <section id="story-start" class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-8">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Câu chuyện về "7 tỷ mạng sống"</h2>
-                <p class="text-xl text-gray-700 leading-relaxed mb-6 text-justify">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="story_title">Câu chuyện về "7 tỷ mạng sống"</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6 text-justify" data-lang-key="story_p1">
                     Hãy tưởng tượng. Trong một góc khuất của nền công nghiệp thực phẩm, mỗi năm, 7 tỷ sinh mạng nhỏ bé kết thúc hành trình của mình chỉ sau vài giờ chào đời. Chúng không phải là thức ăn. Chúng là những chú gà trống con bị tiêu hủy.
                 </p>
-                <p class="text-xl text-gray-600 leading-relaxed text-justify">
+                <p class="text-xl text-gray-600 leading-relaxed text-justify" data-lang-key="story_p2">
                     Đó là một sự lãng phí khủng khiếp về kinh tế, nhưng trên hết, đó là một vết rạn nứt trong lương tâm của cả một ngành công nghiệp. Chúng ta không thể tiếp tục lờ đi tiếng nói của đạo đức. Chúng ta không thể tiếp tục phung phí nguồn lực chỉ vì thiếu một giải pháp công nghệ.
                 </p>
             </div>
@@ -119,8 +134,8 @@
         <!-- Giữa câu chuyện: Sự xuất hiện của "Những người thắp sáng hy vọng" -->
         <section class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-4">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Sự xuất hiện của những người thắp sáng hy vọng</h2>
-                <p class="text-lg text-gray-700 leading-relaxed mt-4 text-justify">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="team_title">Sự xuất hiện của những người thắp sáng hy vọng</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mt-4 text-justify" data-lang-key="team_content">
                     Đội ngũ của chúng tôi không chỉ là những kỹ sư. Họ là những con người đã chứng kiến vấn đề này và quyết tâm phải thay đổi. Chúng tôi là một tập hợp những khối óc tinh túy nhất từ các tập đoàn công nghệ hàng đầu Việt Nam như VinAI (VinGroup), FPT Software, và nhiều công ty công nghệ lớn khác. Chúng tôi không chỉ là những người giỏi kỹ thuật, chúng tôi là những người đã xây dựng nên những sản phẩm AI trị giá hàng triệu đô. Người dẫn dắt chúng tôi là một người đã tạo ra hợp đồng 10 triệu USD và đã chiến thắng cuộc thi QVIC trị giá 100.000 USD bằng chính sự sáng tạo của mình. Để đảm bảo tầm nhìn của chúng tôi vươn ra toàn cầu, chúng tôi có sự cố vấn của các Tiến sĩ AI từ Châu Âu, những người đã từng nghiên cứu tại các trung tâm công nghệ hàng đầu ở Ý và Phần Lan. Đây là đội ngũ đã được chứng minh năng lực, những con người đã biến những ý tưởng lớn nhất thành hiện thực.
                 </p>
             </div>
@@ -129,14 +144,14 @@
         <!-- Giữa câu chuyện: Giải pháp và Thành quả -->
         <section class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-4">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Giải pháp và thành quả đầu tiên của chúng tôi</h2>
-                <p class="text-gray-700 leading-relaxed mb-4 text-justify">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="solution_title">Giải pháp và thành quả đầu tiên của chúng tôi</h2>
+                <p class="text-gray-700 leading-relaxed mb-4 text-justify" data-lang-key="solution_p1">
                     Chúng tôi đã dành hơn 2 năm để nghiên cứu và tìm kiếm câu trả lời, từ đó tạo ra EggVision, một giải pháp sử dụng AI thị giác máy tính, không chạm vào trứng, không gây tổn hại, để trả lời một câu hỏi đơn giản: Trứng này có phải là gà trống?
                 </p>
-                <p class="text-gray-700 leading-relaxed mb-4 text-justify">
+                <p class="text-gray-700 leading-relaxed mb-4 text-justify" data-lang-key="solution_p2">
                     Chúng tôi bắt đầu với một prototype nhỏ bé trong phòng thí nghiệm. Độ chính xác ban đầu chỉ đạt 68%. Nhiều người có thể đã bỏ cuộc. Nhưng chúng tôi nhìn thấy điều mà người khác không thấy: đó không phải là một con số, đó là một lời hứa. Lời hứa rằng với dữ liệu và sự kiên trì, chúng tôi có thể đưa con số đó lên 85-90%, thậm chí cao hơn nữa.
                 </p>
-                <p class="text-gray-700 leading-relaxed text-justify">
+                <p class="text-gray-700 leading-relaxed text-justify" data-lang-key="solution_p3">
                     Chúng tôi đã chứng minh điều đó. Chúng tôi đã thử nghiệm tại một trại gà thật, thu thập hàng ngàn mẫu dữ liệu, vì chúng tôi biết rằng để giải quyết một vấn đề thực tế, chúng tôi phải làm việc trong một môi trường thực tế.
                 </p>
             </div>
@@ -145,15 +160,15 @@
         <!-- Kết thúc câu chuyện: Lời kêu gọi hành động -->
         <section class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-8">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Hành trình thay đổi thế giới</h2>
-                <p class="text-xl text-gray-600 leading-relaxed mb-6">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="impact_title">Hành trình thay đổi thế giới</h2>
+                <p class="text-xl text-gray-600 leading-relaxed mb-6" data-lang-key="impact_p1">
                     Chúng tôi mời bạn cùng tham gia vào một hành trình vĩ đại.
                 </p>
                 <div class="card fade-in max-w-2xl mx-auto">
-                    <p class="text-gray-700 leading-relaxed mb-4">
+                    <p class="text-gray-700 leading-relaxed mb-4" data-lang-key="impact_p2">
                         Chúng tôi tìm kiếm 500.000 USD, không phải chỉ để phát triển sản phẩm, mà để tạo ra một làn sóng thay đổi. Khoản vốn này sẽ giúp chúng tôi xây dựng những thiết bị đầu tiên, tuyển dụng những con người xuất sắc nhất, và đưa giải pháp nhân đạo này đến hàng triệu trại ấp trên khắp Đông Nam Á và toàn cầu.
                     </p>
-                    <p class="text-gray-700 leading-relaxed">
+                    <p class="text-gray-700 leading-relaxed" data-lang-key="impact_p3">
                         Hành trình này không chỉ là một khoản đầu tư tài chính. Đây là khoản đầu tư vào một tương lai nhân đạo hơn, một nền kinh tế bền vững hơn, nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.
                     </p>
                 </div>
@@ -163,11 +178,11 @@
         <!-- Slide cuối: Lời kêu gọi và Thông tin liên hệ -->
         <section id="contact" class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-8">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Hãy cùng chúng tôi thắp sáng hy vọng cho 7 tỷ mạng sống này.</h2>
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-lang-key="cta_final">Hãy cùng chúng tôi thắp sáng hy vọng cho 7 tỷ mạng sống này.</h2>
                 <div class="bg-indigo-50 p-6 rounded-2xl shadow-md border border-indigo-200 w-full max-w-sm mx-auto">
-                    <h3 class="text-xl font-bold text-indigo-700 mb-2">Thông tin liên hệ</h3>
-                    <p class="text-gray-600">Email: info@aiti.vn</p>
-                    <p class="text-gray-600">Phone: +84 88888 1081</p>
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2" data-lang-key="contact_title">Thông tin liên hệ</h3>
+                    <p class="text-gray-600" data-lang-key="contact_email">Email: info@aiti.vn</p>
+                    <p class="text-gray-600" data-lang-key="contact_phone">Phone: +84 88888 1081</p>
                 </div>
             </div>
         </section>
@@ -175,6 +190,99 @@
     </div>
 
     <script>
+        const langData = {
+            'vi': {
+                'slogan': 'Nơi công nghệ AI đứng về phía sự sống',
+                'mission_statement': 'Hãy cùng chúng tôi chấm dứt sự lãng phí và mang lại một tương lai nhân đạo hơn cho ngành chăn nuôi.',
+                'cta_start': 'Bắt đầu câu chuyện',
+                'industry_title': 'Quy mô ngành: Một trụ cột của nền kinh tế toàn cầu',
+                'industry_intro': 'Ngành chăn nuôi gia cầm là một phần không thể thiếu của nền kinh tế thế giới.',
+                'chicken_title': 'Thị trường thịt gà',
+                'chicken_stat': 'Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.',
+                'chicken_li1': 'Châu Mỹ: Tiêu thụ thịt gà bình quân đầu người cao nhất thế giới.',
+                'chicken_li2': 'Việt Nam: Nhu cầu tiêu thụ gà thịt tăng trưởng liên tục.',
+                'egg_title': 'Thị trường trứng gà',
+                'egg_stat': 'Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.',
+                'egg_li1': 'Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.',
+                'egg_li2': 'Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.',
+                'cta_behind': 'Nhưng đằng sau đó...',
+                'story_title': 'Câu chuyện về "7 tỷ mạng sống"',
+                'story_p1': 'Hãy tưởng tượng. Trong một góc khuất của nền công nghiệp thực phẩm, mỗi năm, 7 tỷ sinh mạng nhỏ bé kết thúc hành trình của mình chỉ sau vài giờ chào đời. Chúng không phải là thức ăn. Chúng là những chú gà trống con bị tiêu hủy.',
+                'story_p2': 'Đó là một sự lãng phí khủng khiếp về kinh tế, nhưng trên hết, đó là một vết rạn nứt trong lương tâm của cả một ngành công nghiệp. Chúng ta không thể tiếp tục lờ đi tiếng nói của đạo đức. Chúng ta không thể tiếp tục phung phí nguồn lực chỉ vì thiếu một giải pháp công nghệ.',
+                'team_title': 'Sự xuất hiện của những người thắp sáng hy vọng',
+                'team_content': 'Đội ngũ của chúng tôi không chỉ là những kỹ sư. Họ là những con người đã chứng kiến vấn đề này và quyết tâm phải thay đổi. Chúng tôi là một tập hợp những khối óc tinh túy nhất từ các tập đoàn công nghệ hàng đầu Việt Nam như VinAI (VinGroup), FPT Software, và nhiều công ty công nghệ lớn khác. Chúng tôi không chỉ là những người giỏi kỹ thuật, chúng tôi là những người đã xây dựng nên những sản phẩm AI trị giá hàng triệu đô. Người dẫn dắt chúng tôi là một người đã tạo ra hợp đồng 10 triệu USD và đã chiến thắng cuộc thi QVIC trị giá 100.000 USD bằng chính sự sáng tạo của mình. Để đảm bảo tầm nhìn của chúng tôi vươn ra toàn cầu, chúng tôi có sự cố vấn của các Tiến sĩ AI từ Châu Âu, những người đã từng nghiên cứu tại các trung tâm công nghệ hàng đầu ở Ý và Phần Lan. Đây là đội ngũ đã được chứng minh năng lực, những con người đã biến những ý tưởng lớn nhất thành hiện thực.',
+                'solution_title': 'Giải pháp và thành quả đầu tiên của chúng tôi',
+                'solution_p1': 'Chúng tôi đã dành hơn 2 năm để nghiên cứu và tìm kiếm câu trả lời, từ đó tạo ra EggVision, một giải pháp sử dụng AI thị giác máy tính, không chạm vào trứng, không gây tổn hại, để trả lời một câu hỏi đơn giản: Trứng này có phải là gà trống?',
+                'solution_p2': 'Chúng tôi bắt đầu với một prototype nhỏ bé trong phòng thí nghiệm. Độ chính xác ban đầu chỉ đạt 68%. Nhiều người có thể đã bỏ cuộc. Nhưng chúng tôi nhìn thấy điều mà người khác không thấy: đó không phải là một con số, đó là một lời hứa. Lời hứa rằng với dữ liệu và sự kiên trì, chúng tôi có thể đưa con số đó lên 85-90%, thậm chí cao hơn nữa.',
+                'solution_p3': 'Chúng tôi đã chứng minh điều đó. Chúng tôi đã thử nghiệm tại một trại gà thật, thu thập hàng ngàn mẫu dữ liệu, vì chúng tôi biết rằng để giải quyết một vấn đề thực tế, chúng tôi phải làm việc trong một môi trường thực tế.',
+                'impact_title': 'Hành trình thay đổi thế giới',
+                'impact_p1': 'Chúng tôi mời bạn cùng tham gia vào một hành trình vĩ đại.',
+                'impact_p2': 'Chúng tôi tìm kiếm 500.000 USD, không phải chỉ để phát triển sản phẩm, mà để tạo ra một làn sóng thay đổi. Khoản vốn này sẽ giúp chúng tôi xây dựng những thiết bị đầu tiên, tuyển dụng những con người xuất sắc nhất, và đưa giải pháp nhân đạo này đến hàng triệu trại ấp trên khắp Đông Nam Á và toàn cầu.',
+                'impact_p3': 'Hành trình này không chỉ là một khoản đầu tư tài chính. Đây là khoản đầu tư vào một tương lai nhân đạo hơn, một nền kinh tế bền vững hơn, nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.',
+                'cta_final': 'Hãy cùng chúng tôi thắp sáng hy vọng cho 7 tỷ mạng sống này.',
+                'contact_title': 'Thông tin liên hệ',
+                'contact_email': 'Email: info@aiti.vn',
+                'contact_phone': 'Phone: +84 88888 1081',
+                'lang_button': 'EN'
+            },
+            'en': {
+                'slogan': 'Where AI technology stands on the side of life',
+                'mission_statement': 'Join us in ending the waste and creating a more humane future for the poultry industry.',
+                'cta_start': 'Start the story',
+                'industry_title': 'Industry Scale: A Pillar of the Global Economy',
+                'industry_intro': 'The poultry industry is an indispensable part of the world economy.',
+                'chicken_title': 'Chicken Meat Market',
+                'chicken_stat': 'Over 1.4 billion tons of chicken meat are consumed annually worldwide.',
+                'chicken_li1': 'The Americas: Highest per capita chicken meat consumption in the world.',
+                'chicken_li2': 'Vietnam: Chicken meat consumption demand is continuously growing.',
+                'egg_title': 'Egg Market',
+                'egg_stat': 'Annual egg production exceeds 1.6 trillion eggs.',
+                'egg_li1': 'The Americas: One of the world\'s largest egg producers.',
+                'egg_li2': 'Vietnam: Egg consumption has increased sharply, reaching an average of 160 eggs/person/year.',
+                'cta_behind': 'But behind it...',
+                'story_title': 'The Story of "7 Billion Lives"',
+                'story_p1': 'Imagine. In a hidden corner of the food industry, every year, 7 billion small lives end their journey just hours after being born. They are not food. They are male chicks that are culled.',
+                'story_p2': 'It is a terrible economic waste, but above all, it is a moral stain on an entire industry. We cannot continue to ignore the voice of ethics. We cannot continue to squander resources simply for the lack of a technological solution.',
+                'team_title': 'The Appearance of Those Who Ignite Hope',
+                'team_content': 'Our team is not just a group of engineers. They are individuals who have witnessed this problem and are determined to make a change. We are a collection of the brightest minds from leading Vietnamese technology corporations such as VinAI (VinGroup), FPT Software, and many other major tech companies. We are not just good at technology; we are the ones who have built multi-million dollar AI products. Our leader is someone who has created a $10 million contract and won the $100,000 QVIC competition with his own creativity. To ensure our vision reaches globally, we have the mentorship of AI PhDs from Europe, who have conducted research at leading technology centers in Italy and Finland. This is a team with proven capability, individuals who have turned the biggest ideas into reality.',
+                'solution_title': 'Our First Solution and Achievement',
+                'solution_p1': 'We spent over 2 years researching and searching for an answer, from which we created EggVision, a solution using computer vision AI, which does not touch or harm the egg, to answer a simple question: Is this egg a male chick?',
+                'solution_p2': 'We started with a small prototype in the lab. The initial accuracy was only 68%. Many would have given up. But we saw what others didn\'t: it wasn\'t just a number, it was a promise. A promise that with data and perseverance, we could push that number to 85-90%, and even higher.',
+                'solution_p3': 'We proved it. We conducted a trial at a real poultry farm, collecting thousands of data samples, because we knew that to solve a real-world problem, we had to work in a real-world environment.',
+                'impact_title': 'A Journey to Change the World',
+                'impact_p1': 'We invite you to join us on a great journey.',
+                'impact_p2': 'We are seeking $500,000, not just to develop the product, but to create a wave of change. This capital will help us build the first devices, recruit the most excellent people, and bring this humane solution to millions of hatcheries across Southeast Asia and globally.',
+                'impact_p3': 'This journey is not just a financial investment. This is an investment in a more humane future, a more sustainable economy, where technology serves not only economic benefit, but also life itself.',
+                'cta_final': 'Join us in igniting hope for these 7 billion lives.',
+                'contact_title': 'Contact Information',
+                'contact_email': 'Email: info@aiti.vn',
+                'contact_phone': 'Phone: +84 88888 1081',
+                'lang_button': 'VN'
+            }
+        };
+        
+        const langToggleBtn = document.getElementById('lang-toggle');
+        let currentLang = localStorage.getItem('lang') || 'vi';
+
+        const updateLanguage = (lang) => {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (langData[lang] && langData[lang][key]) {
+                    el.textContent = langData[lang][key];
+                }
+            });
+            langToggleBtn.textContent = langData[lang].lang_button;
+            localStorage.setItem('lang', lang);
+        };
+
+        updateLanguage(currentLang);
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            updateLanguage(currentLang);
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
