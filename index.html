@@ -15,16 +15,15 @@
             color: #1F2937;
         }
 
-        /* Thêm màu nâu cho Egg trong Tailwind */
         .text-egg-brown {
-            color: #704214; /* Màu nâu đậm như vỏ trứng */
+            color: #704214;
         }
         
         .container-snap {
             height: 100vh;
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
-            scroll-snap-type: y mandatory; /* Áp dụng snap behavior chung */
+            scroll-snap-type: y mandatory;
         }
 
         .section-snap {
@@ -35,10 +34,9 @@
             align-items: center;
             padding: 2rem;
             text-align: center;
-            scroll-snap-align: start; /* Căn chỉnh điểm bắt đầu cuộn */
+            scroll-snap-align: start;
         }
         
-        /* Hình nền cho Slide 3 */
         #story-start {
             background-image: url('background3.jpg');
             background-size: cover;
@@ -46,7 +44,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Hình nền cho Slide 5 */
         .solution-section {
             background-image: url('background6.jpg');
             background-size: cover;
@@ -54,25 +51,25 @@
             background-repeat: no-repeat;
         }
 
-        /* Ẩn section mặc định, chỉ hiển thị nếu JS tìm thấy ảnh */
-        #machine-images {
-            display: none; /* Sẽ được JS thay đổi thành flex nếu ảnh tồn tại */
-            flex-direction: row; /* Để xếp ảnh cạnh nhau */
-            gap: 1rem; /* Khoảng cách giữa 2 hình ảnh */
+        /* PC/Tablet default styles for machine images */
+        #machine-images-container {
+            display: none; /* Hidden by default, shown by JS */
+            flex-direction: row; 
+            gap: 1rem; 
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
-            background-color: #f0f0f0; /* Thêm màu nền cho section này để thấy rõ khoảng trống nếu có */
+            overflow: hidden; 
+            background-color: #f0f0f0; 
+        }
+        #machine-images-container img {
+            max-width: 50%; 
+            max-height: 100vh; 
+            object-fit: contain; 
+            width: auto; 
+            height: auto; 
         }
 
-        #machine-images img {
-            max-width: 50%; /* Mỗi ảnh không vượt quá 50% chiều rộng */
-            max-height: 100vh; /* Mỗi ảnh không vượt quá chiều cao màn hình */
-            object-fit: contain; /* Đảm bảo ảnh hiển thị đầy đủ, không cắt xén, giữ nguyên tỷ lệ */
-            width: auto; /* Chiều rộng tự động điều chỉnh theo tỷ lệ */
-            height: auto; /* Chiều cao tự động điều chỉnh theo tỷ lệ */
-        }
-
+        /* Fade-in animation */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -81,6 +78,156 @@
         .is-visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* MOBILE OPTIMIZATIONS */
+        @media (max-width: 767px) {
+            /* Slide 1 - Home */
+            #top h1 {
+                font-size: 4rem; /* Giảm text-7xl xuống 4rem (khoảng text-5xl) */
+                margin-bottom: 2.5rem; /* Giảm mb-20 */
+            }
+            #top h2 {
+                font-size: 2.25rem; /* Giảm text-4xl xuống 2.25rem (text-3xl) */
+                margin-bottom: 1.5rem; /* Giảm mb-10 */
+            }
+            #top p {
+                font-size: 1.125rem; /* Giảm text-xl xuống 1.125rem (text-lg) */
+                margin-bottom: 1.5rem; /* Giảm mb-8 */
+                padding-left: 0.5rem; /* Thêm padding ngang nhẹ */
+                padding-right: 0.5rem;
+            }
+
+            /* Slide 2 & 3 - Industry Intro & Details (split into 2 mobile pages) */
+            #industry-scale-intro .md\:hidden {
+                display: block !important; /* Hiển thị cho mobile */
+            }
+            #industry-scale-intro .hidden.md\:block {
+                display: none !important; /* Ẩn cho mobile */
+            }
+            #industry-scale-intro h2 {
+                 font-size: 1.875rem; /* text-3xl xuống text-2xl */
+                 margin-bottom: 1rem;
+            }
+            #industry-scale-intro p {
+                font-size: 1.125rem; /* text-xl xuống text-lg */
+            }
+            /* Ẩn "Nhưng đằng sau đó..." trên trang giới thiệu cho mobile */
+            #industry-scale-intro .mobile-cta-hidden {
+                display: none !important;
+            }
+
+            #industry-scale-details-mobile {
+                display: flex !important; /* Đảm bảo hiển thị trang chi tiết trên mobile */
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            #industry-scale-details-mobile h3 {
+                font-size: 1.5rem; /* text-2xl xuống text-xl */
+            }
+            #industry-scale-details-mobile .bg-yellow-50, 
+            #industry-scale-details-mobile .bg-orange-50 {
+                padding: 1.25rem; /* Giảm padding box */
+            }
+            #industry-scale-details-mobile p, 
+            #industry-scale-details-mobile ul li {
+                font-size: 1rem; /* Giảm font nội dung box */
+            }
+            #industry-scale-details-mobile .text-xl {
+                font-size: 1.125rem; /* Cho 'Nhưng đằng sau đó...' */
+            }
+
+
+            /* Slide 4 - Story Start */
+            #story-start h2 {
+                font-size: 2.5rem; /* Giảm text-5xl xuống 2.5rem (khoảng text-4xl) */
+                margin-bottom: 1.5rem;
+            }
+            #story-start p {
+                font-size: 1.125rem; /* text-xl xuống text-lg */
+                margin-bottom: 1.25rem;
+            }
+
+            /* Slide 5 - Team */
+            #team h2 {
+                font-size: 2.25rem; /* text-4xl xuống text-3xl */
+                line-height: 1.3;
+            }
+            #team p {
+                font-size: 1.125rem; /* text-xl xuống text-lg */
+                margin-top: 1rem;
+            }
+
+            /* Slide 6 - Solution */
+            .solution-section h2 {
+                font-size: 2rem; /* text-4xl xuống 2rem (khoảng text-3xl) */
+                line-height: 1.3;
+            }
+            .solution-section p {
+                font-size: 1.125rem; /* text-2xl xuống text-lg */
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            /* Slide 7 & 8 - Machine Images (Split into 2 sections for mobile) */
+            /* Hide the PC layout entirely */
+            #machine-images-container {
+                display: none !important;
+            }
+            /* Show individual image sections */
+            .machine-image-single {
+                display: flex !important; /* Ensure these are flex for centering */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0; /* Remove section padding */
+                background-color: #f0f0f0;
+            }
+            .machine-image-single .fade-in {
+                width: 100%; /* Make fade-in block cover full width */
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .machine-image-single img {
+                max-width: 100%;
+                max-height: 80vh; /* Allow some top/bottom margin */
+                width: auto;
+                height: auto;
+                object-fit: contain; /* Keep aspect ratio */
+                padding: 1rem; /* Padding around image */
+            }
+
+
+            /* Slide 9 - Impact */
+            #impact h2 {
+                font-size: 2.25rem; /* text-5xl xuống text-3xl */
+                margin-bottom: 1.5rem;
+            }
+            #impact .impact-p1-combined { /* Điều chỉnh font cho câu gom lại */
+                font-size: 1.125rem; /* text-xl xuống text-lg */
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            #impact p:not(.impact-p1-combined) { /* Áp dụng cho p2, p3 */
+                font-size: 1rem; /* text-xl xuống text-base */
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+
+            /* Slide 10 - Contact */
+            #contact h2 {
+                font-size: 1.6rem; /* text-2xl xuống khoảng 1.6rem */
+                line-height: 1.4;
+            }
+            #contact .bg-indigo-50 {
+                padding: 1.5rem; /* Giảm padding box liên hệ */
+                margin-top: 2rem; /* Giảm mt-10 */
+            }
+            #contact h3, #contact p {
+                font-size: 1.125rem; /* text-2xl/xl xuống text-lg */
+            }
         }
     </style>
 </head>
@@ -110,37 +257,70 @@
             </div>
         </section>
 
-        <section id="industry-scale" class="section-snap py-12">
+        <section id="industry-scale-intro" class="section-snap py-12">
             <div class="fade-in max-w-4xl px-4">
                 <h2 class="text-3xl font-bold text-gray-900 mb-6 leading-tight" data-lang-key="industry_title">Quy mô ngành: Một trụ cột của nền kinh tế toàn cầu</h2>
                 <p class="text-xl text-gray-700 leading-relaxed mb-8" data-lang-key="industry_intro">
                     Ngành chăn nuôi gia cầm là một phần không thể thiếu của nền kinh tế thế giới.
                 </p>
-                <div class="flex flex-col md:flex-row justify-center items-stretch space-y-8 md:space-y-0 md:space-x-10 mt-6">
-                    <div class="bg-yellow-50 p-8 rounded-3xl shadow-lg border border-yellow-200 w-full max-w-md flex flex-col items-start text-left">
-                        <h3 class="text-2xl font-bold text-yellow-700 mb-2" data-lang-key="chicken_title">Thị trường thịt gà</h3>
-                        <p class="text-xl text-gray-600 mb-2" data-lang-key="chicken_stat">Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.</p>
-                        <ul class="text-lg text-gray-600 list-inside list-disc">
+                <div class="md:hidden">
+                    <span class="text-xl font-bold text-gray-700 mt-10 inline-block">
+                        Xem chi tiết thống kê ở trang sau...
+                    </span>
+                    </div>
+                <div class="hidden md:block">
+                    <div class="flex justify-center items-stretch space-x-10 mt-6">
+                        <div class="bg-yellow-50 p-8 rounded-3xl shadow-lg border border-yellow-200 w-full max-w-md flex flex-col items-start text-left">
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-2" data-lang-key="chicken_title">Thị trường thịt gà</h3>
+                            <p class="text-xl text-gray-600 mb-2" data-lang-key="chicken_stat">Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.</p>
+                            <ul class="text-lg text-gray-600 list-inside list-disc">
+                                <li data-lang-key="chicken_li1">Châu Mỹ: Tiêu thụ thịt gà bình quân đầu người cao nhất thế giới.</li>
+                                <li data-lang-key="chicken_li2">Việt Nam: Nhu cầu tiêu thụ gà thịt tăng trưởng liên tục.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-orange-50 p-8 rounded-3xl shadow-lg border border-orange-200 w-full max-w-md flex flex-col items-start text-left">
+                            <h3 class="text-2xl font-bold text-orange-700 mb-2" data-lang-key="egg_title">Thị trường trứng gà</h3>
+                            <p class="text-xl text-gray-600 mb-2" data-lang-key="egg_stat">Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.</p>
+                            <ul class="text-lg text-gray-600 list-inside list-disc">
+                                <li data-lang-key="egg_li1">Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.</li>
+                                <li data-lang-key="egg_li2">Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="text-xl font-bold text-gray-700 mt-6 inline-block" data-lang-key="cta_behind">
+                        Nhưng đằng sau đó...
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section id="industry-scale-details-mobile" class="section-snap py-12 hidden md:hidden">
+            <div class="fade-in max-w-4xl px-4">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 leading-tight">Chi tiết thống kê</h3>
+                <div class="flex flex-col justify-center items-stretch space-y-8 mt-6">
+                    <div class="bg-yellow-50 p-6 rounded-3xl shadow-lg border border-yellow-200 w-full flex flex-col items-start text-left">
+                        <h3 class="text-xl font-bold text-yellow-700 mb-2" data-lang-key="chicken_title">Thị trường thịt gà</h3>
+                        <p class="text-lg text-gray-600 mb-2" data-lang-key="chicken_stat">Hơn 1.4 tỷ tấn thịt gà được tiêu thụ mỗi năm trên toàn cầu.</p>
+                        <ul class="text-md text-gray-600 list-inside list-disc">
                             <li data-lang-key="chicken_li1">Châu Mỹ: Tiêu thụ thịt gà bình quân đầu người cao nhất thế giới.</li>
                             <li data-lang-key="chicken_li2">Việt Nam: Nhu cầu tiêu thụ gà thịt tăng trưởng liên tục.</li>
                         </ul>
                     </div>
-                    <div class="bg-orange-50 p-8 rounded-3xl shadow-lg border border-orange-200 w-full max-w-md flex flex-col items-start text-left">
-                        <h3 class="text-2xl font-bold text-orange-700 mb-2" data-lang-key="egg_title">Thị trường trứng gà</h3>
-                        <p class="text-xl text-gray-600 mb-2" data-lang-key="egg_stat">Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.</p>
-                        <ul class="text-lg text-gray-600 list-inside list-disc">
+                    <div class="bg-orange-50 p-6 rounded-3xl shadow-lg border border-orange-200 w-full flex flex-col items-start text-left">
+                        <h3 class="text-xl font-bold text-orange-700 mb-2" data-lang-key="egg_title">Thị trường trứng gà</h3>
+                        <p class="text-lg text-gray-600 mb-2" data-lang-key="egg_stat">Sản lượng trứng gà vượt ngưỡng 1.6 nghìn tỷ quả hàng năm.</p>
+                        <ul class="text-md text-gray-600 list-inside list-disc">
                             <li data-lang-key="egg_li1">Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.</li>
                             <li data-lang-key="egg_li2">Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.</li>
                         </ul>
                     </div>
                 </div>
-                <span class="text-xl font-bold text-gray-700 mt-6 inline-block" data-lang-key="cta_behind">
+                <span class="text-xl font-bold text-gray-700 mt-6 inline-block" data-lang-key="cta_behind_mobile">
                     Nhưng đằng sau đó...
                 </span>
             </div>
         </section>
-
-
+        
         <section id="story-start" class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-8">
                 <h2 class="text-5xl font-bold text-gray-900 mb-8" data-lang-key="story_title">Câu chuyện về "7 tỷ mạng sống"</h2>
@@ -153,7 +333,7 @@
             </div>
         </section>
 
-        <section class="section-snap">
+        <section id="team" class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-4">
                 <h2 class="text-4xl font-bold text-gray-900 mb-8 leading-tight" data-lang-key="team_title">Sự Xuất Hiện Của <br> Những Người Thắp Sáng Hy Vọng.</h2>
                 <p class="text-xl text-gray-700 leading-relaxed mt-4 text-justify max-w-3xl mx-auto" data-lang-key="team_content_p1">
@@ -180,14 +360,25 @@
             </div>
         </section>
 
-        <section id="machine-images" class="section-snap">
-            </section>
+        <section id="machine-images-container" class="section-snap hidden md:flex">
+        </section>
 
-        <section class="section-snap">
+        <section id="machine-image-1-mobile" class="section-snap machine-image-single hidden md:hidden">
+            <div class="fade-in w-full h-full flex justify-center items-center">
+                <img src="may1.jpg" alt="Machine Image 1">
+            </div>
+        </section>
+        <section id="machine-image-2-mobile" class="section-snap machine-image-single hidden md:hidden">
+            <div class="fade-in w-full h-full flex justify-center items-center">
+                <img src="may2.jpg" alt="Machine Image 2">
+            </div>
+        </section>
+        
+        <section id="impact" class="section-snap">
             <div class="fade-in max-w-4xl px-4 py-8">
                 <h2 class="text-5xl font-bold text-gray-900 mb-8" data-lang-key="impact_title">Hành Trình Thay Đổi Thế Giới</h2>
-                <p class="text-xl font-semibold text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto" data-lang-key="impact_p1">
-                    Chúng tôi đang mời bạn cùng tham gia vào một Hành trình vĩ đại, <br> nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.
+                <p class="text-xl font-semibold text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto impact-p1-combined" data-lang-key="impact_p1_combined">
+                    Chúng tôi đang mời bạn cùng tham gia vào một Hành trình vĩ đại, nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.
                 </p>
                 <p class="text-xl text-gray-700 leading-relaxed mb-6 max-w-3xl mx-auto text-justify" data-lang-key="impact_p2">
                     Tiềm năng đột phá đã được chứng minh. Để hiện thực hóa tầm nhìn tại hàng triệu trại ấp toàn cầu, chúng tôi tìm kiếm những khối óc xuất sắc nhất, đồng đội chiến lược và nguồn lực để tăng tốc xây dựng thiết bị tiên phong, tạo ra làn sóng thay đổi trên quy mô lớn.
@@ -215,7 +406,6 @@
             'vi': {
                 'slogan': 'Nơi công nghệ AI đứng về phía sự sống',
                 'mission_statement': 'Hãy cùng chúng tôi chấm dứt sự lãng <br> phí và mang lại một tương lai nhân đạo hơn cho ngành chăn nuôi.',
-                'cta_start': 'Bắt đầu câu chuyện', 
                 'industry_title': 'Quy mô ngành: Một trụ cột của nền kinh tế toàn cầu',
                 'industry_intro': 'Ngành chăn nuôi gia cầm là một phần không thể thiếu của nền kinh tế thế giới.',
                 'chicken_title': 'Thị trường thịt gà',
@@ -227,28 +417,25 @@
                 'egg_li1': 'Châu Mỹ: Một trong những nhà sản xuất trứng lớn nhất thế giới.',
                 'egg_li2': 'Việt Nam: Tiêu thụ trứng tăng mạnh, đạt trung bình 160 quả/người/năm.',
                 'cta_behind': 'Nhưng đằng sau đó...',
+                'cta_behind_mobile': 'Nhưng đằng sau đó...', // Vẫn giữ key này nhưng không dùng trên mobile intro
                 'story_title': 'Câu chuyện về "7 tỷ mạng sống"',
                 'story_p1': 'Hãy tưởng tượng. Trong một góc khuất của nền công nghiệp thực phẩm, mỗi năm, 7 tỷ sinh mạng nhỏ bé kết thúc hành trình của mình chỉ sau vài giờ chào đời. Chúng không phải là thức ăn. Chúng là những chú gà trống con bị tiêu hủy.',
                 'story_p2': 'Đó là một sự lãng phí khủng khiếp về kinh tế, nhưng trên hết, đó là một vết rạn nứt trong lương tâm của cả một ngành công nghiệp. Chúng ta không thể tiếp tục lờ đi tiếng nói của đạo đức. Chúng ta không thể tiếp tục phung phí nguồn lực chỉ vì thiếu một giải pháp công nghệ.',
                 
-                // --- Trang 4 ---
                 'team_title': 'Sự Xuất Hiện Của <br> Những Người Thắp Sáng Hy Vọng.',
                 'team_content_p1': 'Đội ngũ tinh hoa, được dẫn dắt bởi các Tiến sĩ AI và Sinh học từ Châu Âu, cùng các kỹ sư tài năng, du học. Chúng tôi quy tụ những khối óc có kinh nghiệm từ các tập đoàn công nghệ hàng đầu.',
                 'team_content_p2': 'Năng lực đã được chứng minh: là tác giả của sản phẩm AI triệu đô, hợp đồng $10 triệu, và chiến thắng các cuộc thi khởi nghiệp lớn. Chúng tôi biến ý tưởng lớn thành hiện thực với tầm nhìn toàn cầu.',
 
-                // --- Trang 5 ---
                 'solution_title': 'Giải Pháp EggVision và Hành Trình Đột Phá',
                 'solution_p1': 'Sau 2 năm nghiên cứu, chúng tôi ra mắt <b>EggVision</b> – giải pháp tiên phong dùng AI Thị giác Máy tính xác định giới tính gà trống/mái một cách không chạm, không tổn hại.',
                 'solution_p2': 'Thử nghiệm thực tế cho thấy độ chính xác ban đầu là <b>68%</b> trên dữ liệu hạn chế. Chúng tôi coi đó là lời hứa: hiện tại, chúng tôi đang mở rộng quy mô thu thập dữ liệu lớn để chứng minh triển vọng.',
                 'solution_p3': 'Mục tiêu then chốt là đạt <b>80%</b> độ chính xác để tiến hành thương mại hóa, sau đó chinh phục mốc <b>85-90%</b>.',
                 
-                // --- Trang 6 (Thêm sau trang có hình ảnh máy) ---
                 'impact_title': 'Hành Trình Thay Đổi Thế Giới',
-                'impact_p1': 'Chúng tôi đang mời bạn cùng tham gia vào một Hành trình vĩ đại, <br> nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.',
+                'impact_p1_combined': 'Chúng tôi đang mời bạn cùng tham gia vào một Hành trình vĩ đại, nơi công nghệ không chỉ phục vụ lợi ích kinh tế, mà còn phục vụ sự sống.',
                 'impact_p2': 'Tiềm năng đột phá đã được chứng minh. Để hiện thực hóa tầm nhìn tại hàng triệu trại ấp toàn cầu, chúng tôi tìm kiếm những khối óc xuất sắc nhất, đồng đội chiến lược và nguồn lực để tăng tốc xây dựng thiết bị tiên phong, tạo ra làn sóng thay đổi trên quy mô lớn.',
                 'impact_p3': 'Đây không chỉ là khoản đầu tư. Đây là cơ hội để bạn đồng hành từ đầu trong một tương lai nhân đạo hơn, mang lại cơ hội bùng nổ lợi nhuận gấp nghìn lần và tạo ra tiếng vang toàn cầu.',
                 
-                // --- Slide cuối ---
                 'cta_final': 'Hãy cùng chúng tôi thắp sáng hy vọng cho 7 tỷ mạng sống này.',
                 'contact_title': 'Thông tin liên hệ',
                 'contact_email': 'Email: info@eggvision.ai',
@@ -257,7 +444,6 @@
             'en': {
                 'slogan': 'Where AI technology stands on the side of life',
                 'mission_statement': 'Join us in ending the waste <br> and creating a more humane future for the poultry industry.',
-                'cta_start': 'Start the story', 
                 'industry_title': 'Industry Scale: A Pillar of the Global Economy',
                 'industry_intro': 'The poultry industry is an indispensable part of the world economy.',
                 'chicken_title': 'Chicken Meat Market',
@@ -269,28 +455,25 @@
                 'egg_li1': 'The Americas: One of the world\'s largest egg producers.',
                 'egg_li2': 'Vietnam: Egg consumption has increased sharply, reaching an average of 160 eggs/person/year.',
                 'cta_behind': 'But behind it...',
+                'cta_behind_mobile': 'But behind it...', // Vẫn giữ key này nhưng không dùng trên mobile intro
                 'story_title': 'The Story of "7 Billion Lives"',
                 'story_p1': 'Imagine. In a hidden corner of the food industry, every year, 7 billion small lives end their journey just hours after being born. They are not food. They are male chicks that are culled.',
                 'story_p2': 'It is a terrible economic waste, but above all, it is a moral stain on an entire industry. We cannot continue to ignore the voice of ethics. We cannot continue to squander resources simply for the lack of a technological solution.',
                 
-                // --- New Content Slide 4 ---
                 'team_title': 'The Appearance of <br> Those Who Ignite Hope.',
                 'team_content_p1': 'An elite team, led by AI and Biology PhDs from Europe, alongside talented, internationally-educated engineers. We bring together experienced minds from leading technology corporations.',
                 'team_content_p2': 'Proven capability: authoring multi-million dollar AI products, securing $10 million contracts, and winning major startup competitions. We turn big ideas into reality with a global vision.',
-                
-                // --- New Content Slide 5 ---
+
                 'solution_title': 'EggVision Solution and Breakthrough Journey',
                 'solution_p1': 'After 2 years of research, we launched <b>EggVision</b> – a pioneering solution using Computer Vision AI to non-invasively and non-harmfully determine the sex of male/female chicks.',
                 'solution_p2': 'Real-world testing shows an initial accuracy of <b>68%</b> on limited data. We see this as a promise: we are currently scaling up to collect massive data to prove the potential.',
                 'solution_p3': 'The key goal is to reach <b>80%</b> accuracy for commercialization, and then conquer the <b>85-90%</b> milestone.',
                 
-                // --- New Content Slide 6 (After machine images slide) ---
                 'impact_title': 'A Journey to Change the World',
-                'impact_p1': 'We are inviting you to join a great Journey, <br> where technology serves not only economic benefit, but also life itself.',
+                'impact_p1_combined': 'We are inviting you to join a great Journey, where technology serves not only economic benefit, but also life itself.',
                 'impact_p2': 'The breakthrough potential has been proven. To realize our vision in millions of hatcheries globally, we are seeking the brightest minds, strategic partners, and resources to accelerate the building of pioneering devices, creating a massive wave of change.',
                 'impact_p3': 'This is not just an investment. This is an opportunity for you to partner from the start in a more humane future, offering the chance for thousandfold profit explosion and creating global impact.',
                 
-                // --- Final Slide ---
                 'cta_final': 'Join us in igniting hope for these 7 billion lives.',
                 'contact_title': 'Contact Information',
                 'contact_email': 'Email: info@eggvision.ai',
@@ -307,8 +490,7 @@
                 const key = el.getAttribute('data-lang-key');
                 const content = langData[lang] && langData[lang][key] ? langData[lang][key] : el.textContent;
                 
-                // Use innerHTML for keys that contain <br> or <b> tags
-                if (['mission_statement', 'team_title', 'solution_title', 'solution_p1', 'solution_p2', 'solution_p3', 'impact_p1'].includes(key)) {
+                if (['mission_statement', 'team_title', 'solution_title', 'solution_p1', 'solution_p2', 'solution_p3', 'impact_p1_combined'].includes(key)) {
                     el.innerHTML = content;
                 } else {
                     el.textContent = content;
@@ -340,8 +522,11 @@
                 observer.observe(element);
             });
 
-            // Logic để kiểm tra và hiển thị slide hình ảnh máy
-            const machineImagesSection = document.getElementById('machine-images');
+            const machineImagesContainer = document.getElementById('machine-images-container');
+            const machineImage1Mobile = document.getElementById('machine-image-1-mobile');
+            const machineImage2Mobile = document.getElementById('machine-image-2-mobile');
+            const timestamp = new Date().getTime(); 
+            
             const img1 = new Image();
             const img2 = new Image();
             let img1Loaded = false;
@@ -349,14 +534,24 @@
 
             const checkAndLoadImages = () => {
                 if (img1Loaded && img2Loaded) {
-                    machineImagesSection.style.display = 'flex'; // Hiển thị section
-                    machineImagesSection.innerHTML = `
-                        <img src="may1.jpg" alt="Machine Image 1">
-                        <img src="may2.jpg" alt="Machine Image 2">
-                    `;
-                    // Kích hoạt fade-in nếu cần
-                    machineImagesSection.classList.add('fade-in'); 
-                    observer.observe(machineImagesSection);
+                    if (window.innerWidth >= 768) { 
+                        machineImagesContainer.style.display = 'flex';
+                        machineImagesContainer.innerHTML = `
+                            <img src="may1.jpg?v=${timestamp}" alt="Machine Image 1">
+                            <img src="may2.jpg?v=${timestamp}" alt="Machine Image 2">
+                        `;
+                        observer.observe(machineImagesContainer);
+                        machineImage1Mobile.style.display = 'none';
+                        machineImage2Mobile.style.display = 'none';
+                    } else { // Mobile view
+                        machineImagesContainer.style.display = 'none';
+                        machineImage1Mobile.style.display = 'flex';
+                        machineImage2Mobile.style.display = 'flex';
+                        machineImage1Mobile.querySelector('img').src = `may1.jpg?v=${timestamp}`;
+                        machineImage2Mobile.querySelector('img').src = `may2.jpg?v=${timestamp}`;
+                        observer.observe(machineImage1Mobile);
+                        observer.observe(machineImage2Mobile);
+                    }
                 }
             };
 
@@ -366,8 +561,11 @@
             };
             img1.onerror = () => {
                 console.warn('File may1.jpg not found, not displaying machine images section.');
+                machineImagesContainer.remove();
+                machineImage1Mobile.remove();
+                machineImage2Mobile.remove();
             };
-            img1.src = 'may1.jpg';
+            img1.src = `may1.jpg?v=${timestamp}`;
 
             img2.onload = () => {
                 img2Loaded = true;
@@ -375,8 +573,13 @@
             };
             img2.onerror = () => {
                 console.warn('File may2.jpg not found, not displaying machine images section.');
+                machineImagesContainer.remove();
+                machineImage1Mobile.remove();
+                machineImage2Mobile.remove();
             };
-            img2.src = 'may2.jpg';
+            img2.src = `may2.jpg?v=${timestamp}`;
+
+            window.addEventListener('resize', checkAndLoadImages);
         });
     </script>
 
